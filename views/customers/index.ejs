@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Customers</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="/javascripts/semantic.min.js"></script>
+  <link rel='stylesheet' href='/stylesheets/semantic.min.css' />
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+
+  <div class="ui fixed inverted menu">
+    <div class="ui container">
+      <a href="#" class="header item">
+        <img class="logo" src="assets/images/logo.png">
+        EXPRESS CRUD
+      </a>
+      <a href="/" class="item">Home</a>
+      <a href="/customers" class="item">Customer List</a>
+      <a href="/customers/add" class="item">New Customer</a>
+    </div>
+  </div>
+
+  <div class="ui container">
+
+    <% if (messages.success) { %>
+      <div class="ui ignored success message">Data added or removed <b>successfully.</b></div>
+    <% } %>
+    <!--   <% if (messages.error) { %>
+      <div class="ui ignored danger message"><%- messages.error %></div>
+    <% } %> -->
+
+    <h1 class="ui header">CREATE EXPRESS WEB</h1>
+    <table class="ui celled table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+          <% if(data.length){
+            for(var i = 0; i< data.length; i++) {%>  
+            <tr>
+                <td scope="row"><%= (i+1) %></td>
+                <td data-label="Name"><%= data[i].name%></td>
+                <td data-label="Email"><%= data[i].email%></td>
+                <td data-label="Action">
+                  <a href="../customers/edit/<%=data[i].id%>"><i class="edit icon"></i></a>
+                  <a onclick="return alert('Are You sure?')" href="../customers/delete/<%=data[i].id%>">
+                    
+                  </a>
+                  <a onclick="if (window.confirm('Are You want to delete <%= data[i].name%>?')) { href='../customers/delete/<%=data[i].id%>'}" >
+                    <i class="window close outline icon"></i>
+                  </a>
+                  
+                </td>
+            </tr>
+            <% } %>
+          <% } else{ %>
+                <tr>
+                    <td colspan="3">No user</td>
+                </tr>
+          <% } %> 
+      </tbody>
+    </table>
+  </div>
+
+
+</body>
+</html>

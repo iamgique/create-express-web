@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="/javascripts/semantic.min.js"></script>
+  <link rel='stylesheet' href='/stylesheets/semantic.min.css' />
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+
+  <div class="ui fixed inverted menu">
+    <div class="ui container">
+      <a href="#" class="header item">
+        <img class="logo" src="assets/images/logo.png">
+        EXPRESS CRUD
+      </a>
+      <a href="/" class="item">Home</a>
+      <a href="/customers" class="item">Customer List</a>
+      <a href="/customers/add" class="item">New Customer</a>
+    </div>
+  </div>
+
+  <div class="ui container">
+    <% if (messages.error) { %>
+      <div class="ui ignored error message"><%- messages.error %></div>
+    <% } %>
+    <% if (messages.success) { %>
+      <div class="ui ignored success message"><%- messages.success %></div>
+    <% } %>
+
+    <form action="/customers/add" method="post" name="form1">
+      <div class="ui inverted segment">
+        <div class="ui inverted form">
+          <div class="two fields">
+            <div class="field">
+              <label>Name</label>
+              <input placeholder="Name" type="text" name="name" id="name" value="<%= name %>">
+            </div>
+            <div class="field">
+              <label>Email</label>
+              <input placeholder="Email" type="email" name="email" id="email" aria-describedby="emailHelp" value="<%= email %>">
+            </div>
+          </div>
+          <input class="ui submit button" type="submit" value="Add" />
+        </div>
+      </div>
+    </form>
+
+  </div>
+
+</body>
+</html>
