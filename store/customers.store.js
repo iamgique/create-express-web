@@ -6,7 +6,8 @@ class CustomerStore {
             const rows = await connection.query('SELECT * FROM customer ORDER BY id desc')
             return rows[0]
         } catch (err) {
-            return err.response
+            console.log(err.message)
+            throw err.message
         }
     }
 
@@ -14,7 +15,7 @@ class CustomerStore {
         try {
             return await connection.query('INSERT INTO customer SET ?', req)
         } catch (err) {
-            return err.response
+            throw err.message
         }
     }
 
@@ -23,7 +24,7 @@ class CustomerStore {
             const rows = await connection.query('SELECT * FROM customer WHERE id = ' + req.params.id)
             return rows[0]
         } catch (err) {
-            return err.response
+            throw err.message
         }
     }
 
@@ -31,7 +32,7 @@ class CustomerStore {
         try {
             return await connection.query('UPDATE customer SET ? WHERE id = ' + req.id, req)
         } catch (err) {
-            return err.response
+            throw err.message
         }
     }
 
@@ -39,7 +40,7 @@ class CustomerStore {
         try {
             return await connection.query('DELETE FROM customer WHERE id = ' + req.id, req)
         } catch (err) {
-            return err.response
+            throw err.message
         }
     }
 }

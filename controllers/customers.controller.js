@@ -20,7 +20,7 @@ class CustomersController {
 
     static async get_add_customer(req, res) {
         res.render('customers/add', {
-            title: 'Add New Customers',
+            title: 'Add New Customer',
             name: '',
             email: ''
         })
@@ -74,7 +74,7 @@ class CustomersController {
                 })
             }
         } catch (err) {
-            req.flash('error', 'Customers not found id: ' + req.params.id)
+            req.flash('error', err);
             res.redirect('/customers')
         }
     }
