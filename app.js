@@ -23,7 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({ 
-  secret: '123456cat',
+  secret: '1212312121',
   resave: false,
   saveUninitialized: true,
   cookie: { maxAge: 60000 }
@@ -54,4 +54,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+console.log('Environment: ' + app.get('env'))
 module.exports = app;

@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Customers</title>
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script src="/javascripts/semantic.min.js"></script>
-  <link rel='stylesheet' href='/stylesheets/semantic.min.css' />
-  <link rel='stylesheet' href='/stylesheets/style.css' />
+    <% include partials/header %>
 </head>
 <body>
 
@@ -24,11 +20,11 @@
   <div class="ui container">
 
     <% if (messages.success) { %>
-      <div class="ui ignored success message">Data added or removed <b>successfully.</b></div>
+      <div class="ui ignored success message"><%= messages.success %> <b>successfully.</b></div>
     <% } %>
-    <!--   <% if (messages.error) { %>
-      <div class="ui ignored danger message"><%- messages.error %></div>
-    <% } %> -->
+    <% if (messages.error) { %>
+      <div class="ui ignored error message"><%- messages.error %></div>
+    <% } %>
 
     <h1 class="ui header">CREATE EXPRESS WEB</h1>
     <table class="ui celled table">
