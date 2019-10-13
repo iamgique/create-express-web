@@ -1,17 +1,17 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var flash = require('express-flash');
-var session = require('express-session');
-var bodyParser = require('body-parser');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const flash = require('express-flash');
+const session = require('express-session');
+const bodyParser = require('body-parser');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var customersRouter = require('./routes/customers');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const customersRouter = require('./routes/customers');
 
-var app = express();
+const app = express();
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -34,7 +34,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/customers', customersRouter);
 
-var trimmer = function(req, res, next){
+const trimmer = function(req, res, next){
   req.body = _.object(_.map(req.body, function (value, key) {
       return [key, value.trim()];
   }));
